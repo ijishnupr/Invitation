@@ -1,13 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Main from './container/main';
-import Navbar from './container/navbar';
+
 import Detatils from './container/details';
 
 function App() {
   return (
     <div className="container">
-      <Navbar />
+   
       <div className="row">
 
         <div style={{height:"100vh"}} className="col-12 col-md-8 mx-auto">
