@@ -53,6 +53,7 @@ function Main() {
           }
           .sujay {
             font-family: 'Dancing Script', cursive;
+             color:#CF0A0A
             font-size: 5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
           }
@@ -69,6 +70,7 @@ function Main() {
             }
             .sujay {
               font-size: 6rem;
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 2);
               color:#CF0A0A
             }
             .weds {
@@ -86,6 +88,7 @@ function Main() {
             }
             .sujay {
               font-size: 5rem;
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 2);
             }
             .weds {
               font-size: 2rem;
