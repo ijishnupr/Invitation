@@ -8,25 +8,40 @@ import backgroundAudio from './container/audio.mpeg'; // Replace with the path t
 function App() {
   const [audioPlaying, setAudioPlaying] = useState(false);
   const [audio] = useState(new Audio(backgroundAudio)); // Create an audio instance
+  const [showModal, setShowModal] = useState(true); // State to control modal visibility
 
-  useEffect(() => {
-    // Attempt to autoplay after a slight delay (0.005 seconds)
-    const timer = setTimeout(() => {
-      try {
-        audio.loop = true;
-        audio.play();
+  const handleAudioPlay = () => {
+    if (!audioPlaying) {
+      audio.loop = true;
+      audio.play().then(() => {
         setAudioPlaying(true);
-      } catch (error) {
+        setShowModal(false); // Close the modal after audio starts playing
+      }).catch(error => {
         console.log('Autoplay was prevented:', error);
-      }
-    }, 5); // 5 milliseconds
-
-    // Cleanup the timer when the component unmounts
-    return () => clearTimeout(timer);
-  }, [audio]);
+      });
+    }
+  };
 
   return (
-    <div className="container">
+    <div className="container" onClick={handleAudioPlay}>
+      {/* Bootstrap Modal */}
+      {showModal && (
+        <div className="modal show" style={{ display: 'block' }} tabIndex="-1" role="dialog">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+             
+              <div className="modal-body">
+                <p>Thank you for accepting the invitation!</p>
+                <button type="button" className="btn btn-primary" onClick={handleAudioPlay}>
+                  OK
+                </button>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Main Content */}
       <div className="row">
         <div style={{ height: "100vh" }} className="col-12 col-md-8 mx-auto">
