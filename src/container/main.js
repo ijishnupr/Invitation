@@ -1,65 +1,104 @@
 import { Fragment } from "react";
-import video from './vedio.mp4';
+import backgroundImage from './img.jpeg'; // Replace this with your image path
 
 function Main() {
   return (
-    <Fragment >
+    <Fragment>
       <div>
+        {/* Background */}
+        <div className="background-image"></div>
 
-      {/* Background Video */}
-      <video autoPlay muted loop playsInline className="background-video">
-        <source src={video} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
-      {/* Content */}
-      <div className="content">
-        <div className="text-center">
-          <h2 className="celebrate">Celebrate our love with us!</h2>
-          <br></br><br></br><br></br>
-          <h1 className="sujay">Sujay</h1>
-          <h2 className="weds">weds</h2>
-          <h1 className="sujay" >Karthika</h1>
-        </div>
-      </div>
-
-      {/* Styling */}
-      <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-        
-        .background-video {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          z-index: -1;
-        }
-        .content {
-          position: relative;
-          color: white;
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-          }
-        .text-center {
-          text-align: center;
-          margin-top: 20%;
-        }
-        .weds {
-          font-family: 'Dancing Script', cursive;
-          font-size: 2rem;
-          }
-          .sujay{
-            font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-     .celebrate{
-     font-family: 'Edu Australia VIC WA NT Hand Precursive', cursive;
-     color:#EEDF7A
-     }
-      `}</style>
+        {/* Content */}
+        <div className="content">
+          <div className="text-center">
+            <h1 className="celebrate">Wedding Invitation</h1>
+            <div className="name">
+              <h1 className="sujay">Sujay</h1>
+              <h2 className="weds">weds</h2>
+              <h1 className="sujay">Karthika</h1>
             </div>
+          </div>
+        </div>
+
+        {/* Styling */}
+        <style jsx>{`
+          @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+          .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(${backgroundImage});
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+          }
+          .content {
+            position: relative;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+          }
+          .text-center {
+            text-align: center;
+            margin-top: 15%;
+          }
+          .name {
+            margin-top: 69%;
+          }
+          .weds {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+          }
+          .sujay {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+          }
+          .celebrate {
+            font-family: 'Edu Australia VIC WA NT Hand Precursive', cursive;
+            color: #eedf7a;
+            font-size: 2rem;
+          }
+
+          /* Responsive Styles */
+          @media (max-width: 768px) {
+            .text-center {
+              margin-top: 10%;
+            }
+            .sujay {
+              font-size: 6rem;
+              color:#CF0A0A
+            }
+            .weds {
+              font-size: 2rem;
+              color:#B43F3F;
+            }
+            .celebrate {
+              font-size: 2rem;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .text-center {
+              margin-top: 10%;
+            }
+            .sujay {
+              font-size: 5rem;
+            }
+            .weds {
+              font-size: 2rem;
+            }
+            .celebrate {
+              font-size: 1.5rem;
+            }
+              .name{
+              margin-top:90%
+              }
+          }
+        `}</style>
+      </div>
     </Fragment>
   );
 }

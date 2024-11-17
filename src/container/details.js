@@ -5,8 +5,8 @@ function WeddingInvitation() {
         <Fragment>
             <div
                 style={{
-                    background: 'black',
-                    color: '#4A4A4A',
+                    background: '#495E57',
+                    color: '#495E57',
                     height: '600px',
                     borderRadius: '20px',
                     padding: '30px',
@@ -15,14 +15,15 @@ function WeddingInvitation() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontFamily: "'Great Vibes', cursive",
-                    boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+                    boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+                    marginBottom:'10px'
                 }}
                 className="wedding-invitation"
             >
                 {/* Title Section */}
                 <h1 style={{
                     fontSize: '3rem',
-                    color: '#EEDF7A',
+                    color: '#F4CE14',
                     marginBottom: '10px',
                     textShadow: '2px 2px 5px rgba(0,0,0,0.3)'
                 }}>
