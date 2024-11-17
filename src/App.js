@@ -10,48 +10,23 @@ function App() {
   const [audio] = useState(new Audio(backgroundAudio)); // Create an audio instance
 
   useEffect(() => {
-    // Attempt to autoplay on load
-    const tryAutoplay = async () => {
+    // Attempt to autoplay after a slight delay (0.005 seconds)
+    const timer = setTimeout(() => {
       try {
         audio.loop = true;
-        await audio.play();
+        audio.play();
         setAudioPlaying(true);
       } catch (error) {
         console.log('Autoplay was prevented:', error);
       }
-    };
+    }, 5); // 5 milliseconds
 
-    tryAutoplay();
-
-    // Scroll event listener to trigger playback
-    const handleScroll = () => {
-      if (!audioPlaying) {
-        audio.play();
-        setAudioPlaying(true);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [audio, audioPlaying]);
-
-  const handlePlayAudio = () => {
-    if (!audioPlaying) {
-      audio.play();
-      setAudioPlaying(true);
-    }
-  };
+    // Cleanup the timer when the component unmounts
+    return () => clearTimeout(timer);
+  }, [audio]);
 
   return (
-    <div
-      className="container"
-      onClick={handlePlayAudio}
-      style={{ cursor: "pointer" }} // Indicate interactivity
-    >
+    <div className="container">
       {/* Main Content */}
       <div className="row">
         <div style={{ height: "100vh" }} className="col-12 col-md-8 mx-auto">
