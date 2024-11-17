@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Main from './container/main';
@@ -5,14 +6,37 @@ import Detatils from './container/details';
 import backgroundAudio from './container/audio.mpeg'; // Replace with the path to your audio file
 
 function App() {
-  return (
-    <div className="container">
-      {/* Audio */}
-      <audio autoPlay loop>
-        <source src={backgroundAudio} type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
+  const [audioPlaying, setAudioPlaying] = useState(false);
+  const [audio] = useState(new Audio(backgroundAudio)); // Create an audio instance
 
+  useEffect(() => {
+    // Attempt to autoplay on load
+    const tryAutoplay = async () => {
+      try {
+        audio.loop = true;
+        await audio.play();
+        setAudioPlaying(true);
+      } catch (error) {
+        console.log('Autoplay was prevented:', error);
+      }
+    };
+
+    tryAutoplay();
+  }, [audio]);
+
+  const handlePlayAudio = () => {
+    if (!audioPlaying) {
+      audio.play();
+      setAudioPlaying(true);
+    }
+  };
+
+  return (
+    <div
+      className="container"
+      onClick={handlePlayAudio}
+      style={{ cursor: "pointer" }} // Indicate interactivity
+    >
       {/* Main Content */}
       <div className="row">
         <div style={{ height: "100vh" }} className="col-12 col-md-8 mx-auto">

@@ -40,7 +40,7 @@ function WeddingInvitation() {
 
                 {/* Details Section */}
                 <p style={{
-                    fontSize: '1.2rem',
+                    fontSize: '.8rem',
                     fontFamily:'monospace',
                     color: 'white',
                     textAlign: 'center',
