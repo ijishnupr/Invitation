@@ -22,7 +22,22 @@ function App() {
     };
 
     tryAutoplay();
-  }, [audio]);
+
+    // Scroll event listener to trigger playback
+    const handleScroll = () => {
+      if (!audioPlaying) {
+        audio.play();
+        setAudioPlaying(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [audio, audioPlaying]);
 
   const handlePlayAudio = () => {
     if (!audioPlaying) {
