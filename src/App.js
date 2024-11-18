@@ -13,30 +13,34 @@ function App() {
   const handleAudioPlay = () => {
     if (!audioPlaying) {
       audio.loop = true;
-      audio.play().then(() => {
-        setAudioPlaying(true);
-        setShowModal(false); // Close the modal after audio starts playing
-      }).catch(error => {
-        console.log('Autoplay was prevented:', error);
-      });
+      audio.play()
+        .then(() => {
+          setAudioPlaying(true);
+          setShowModal(false); // Close the modal after audio starts playing
+        })
+        .catch((error) => {
+          console.log('Autoplay was prevented or failed:', error);
+        });
     }
   };
 
   return (
-    <div className="container" onClick={handleAudioPlay}>
+    <div className="container">
       {/* Bootstrap Modal */}
       {showModal && (
         <div className="modal show" style={{ display: 'block' }} tabIndex="-1" role="dialog">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
-             
               <div className="modal-body">
                 <p>Thank you for accepting the invitation!</p>
-                <button type="button" className="btn btn-primary" onClick={handleAudioPlay}>
+                <button
+                  type="button"
+                  className="btn btn-primary float-right"
+                  onClick={handleAudioPlay} // Trigger audio playback directly
+                >
                   OK
                 </button>
               </div>
-            
             </div>
           </div>
         </div>
