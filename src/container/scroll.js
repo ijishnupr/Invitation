@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 
 const ImageSwiper = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Handlers for swipe gestures
   const handleSwipeLeft = () => {
     if (currentIndex < images.length - 1) {
       setCurrentIndex(currentIndex + 1);
@@ -17,13 +16,26 @@ const ImageSwiper = ({ images }) => {
     }
   };
 
-  // Configure swipeable hooks
   const swipeHandlers = useSwipeable({
     onSwipedLeft: handleSwipeLeft,
     onSwipedRight: handleSwipeRight,
     preventDefaultTouchmoveEvent: true,
-    trackMouse: true, // Enables swiping with a mouse for debugging on desktops
+    trackTouch: true,
+    trackMouse: true,
+    delta: 10,
   });
+
+  useEffect(() => {
+    const handleTouchMove = (event) => {
+      if (event.cancelable) event.preventDefault();
+    };
+
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+
+    return () => {
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, []);
 
   return (
     <div {...swipeHandlers} style={styles.container}>
@@ -57,6 +69,7 @@ const styles = {
     width: "100%",
     overflow: "hidden",
     position: "relative",
+    touchAction: "pan-y",
   },
   imageContainer: {
     display: "flex",
