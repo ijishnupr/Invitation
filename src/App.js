@@ -35,10 +35,10 @@ function App() {
                 <p>Thank you for accepting the invitation!</p>
                 <button
                   type="button"
-                  className="btn btn-primary float-right"
+                  className="btn btn-success float-end"
                   onClick={handleAudioPlay} // Trigger audio playback directly
                 >
-                  OK
+                  Continue
                 </button>
               </div>
             </div>

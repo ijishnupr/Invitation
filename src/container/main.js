@@ -64,7 +64,7 @@ function Main() {
           }
 
           /* Responsive Styles */
-          @media (max-width: 768px) {
+          @media (max-width: 2168px) {
             .text-center {
               margin-top: 10%;
             }
