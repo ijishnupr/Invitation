@@ -8,6 +8,7 @@ function WeddingInvitation() {
                     background: '#495E57',
                     color: '#495E57',
                     height: '600px',
+                    marginTop:'60px',
                     borderRadius: '20px',
                     padding: '30px',
                     display: 'flex',

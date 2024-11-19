@@ -7,6 +7,7 @@ function Main() {
       <div>
         {/* Background */}
         <div className="background-image"></div>
+        <div className="gradient-overlay"></div>
 
         {/* Content */}
         <div className="content">
@@ -33,12 +34,23 @@ function Main() {
             background-image: url(${backgroundImage});
             background-size: cover;
             background-position: center;
+            z-index: -2;
+          }
+
+          .gradient-overlay {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, .9), transparent);
             z-index: -1;
           }
+
           .content {
             position: relative;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 30);
           }
           .text-center {
             text-align: center;
@@ -53,9 +65,9 @@ function Main() {
           }
           .sujay {
             font-family: 'Dancing Script', cursive;
-             color:#CF0A0A
+            color: white;
             font-size: 5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 30);
           }
           .celebrate {
             font-family: 'Edu Australia VIC WA NT Hand Precursive', cursive;
@@ -70,12 +82,10 @@ function Main() {
             }
             .sujay {
               font-size: 6rem;
-              text-shadow: 2px 2px 4px rgba(0, 0, 0, 2);
-              color:#CF0A0A
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 30);
             }
             .weds {
               font-size: 2rem;
-              color:#B43F3F;
             }
             .celebrate {
               font-size: 2rem;
@@ -88,8 +98,7 @@ function Main() {
             }
             .sujay {
               font-size: 5rem;
-              color:#CF0A0A
-              text-shadow: 2px 2px 4px rgba(0, 0, 0, 2);
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 30);
             }
             .weds {
               font-size: 2rem;
@@ -97,9 +106,9 @@ function Main() {
             .celebrate {
               font-size: 1.5rem;
             }
-              .name{
-              margin-top:90%
-              }
+            .name {
+              margin-top: 90%;
+            }
           }
         `}</style>
       </div>
