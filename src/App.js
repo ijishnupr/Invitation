@@ -10,17 +10,22 @@ function App() {
   const [audio] = useState(new Audio(backgroundAudio)); // Create an audio instance
   const [showModal, setShowModal] = useState(true); // State to control modal visibility
 
-  const handleAudioPlay = () => {
+  const handleContinue = () => {
     if (!audioPlaying) {
       audio.loop = true;
-      audio.play()
+      audio
+        .play()
         .then(() => {
-          setAudioPlaying(true);
-          setShowModal(false); // Close the modal after audio starts playing
+          setAudioPlaying(true); // Mark audio as playing
         })
         .catch((error) => {
-          console.log('Autoplay was prevented or failed:', error);
+          console.error('Audio playback failed or was prevented:', error);
+        })
+        .finally(() => {
+          setShowModal(false); // Close the modal in all cases
         });
+    } else {
+      setShowModal(false); // Close the modal if audio is already playing
     }
   };
 
@@ -36,7 +41,7 @@ function App() {
                 <button
                   type="button"
                   className="btn btn-success float-end"
-                  onClick={handleAudioPlay} // Trigger audio playback directly
+                  onClick={handleContinue} // Handle audio playback or continue
                 >
                   Continue
                 </button>
@@ -48,7 +53,7 @@ function App() {
 
       {/* Main Content */}
       <div className="row">
-        <div style={{ height: "100vh" }} className="col-12 col-md-8 mx-auto">
+        <div style={{ height: '100vh' }} className="col-12 col-md-8 mx-auto">
           <Main />
         </div>
       </div>
