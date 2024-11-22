@@ -1,22 +1,12 @@
 import { Fragment } from "react";
-import backgroundVideo from './video_.mp4'; // Replace this with your video path
+import backgroundImage from './img.jpeg'; // Replace this with your image path
 
 function Main() {
   return (
     <Fragment>
       <div>
-        {/* Video Background */}
-        <div className="video-background">
-          <video
-            autoPlay
-            loop
-            controls
-            className="video-content"
-          >
-            <source src={backgroundVideo} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+        {/* Background */}
+        <div className="background-image"></div>
         <div className="gradient-overlay"></div>
 
         {/* Content */}
@@ -35,20 +25,16 @@ function Main() {
         <style jsx>{`
           @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
-          .video-background {
+          .background-image {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            background-image: url(${backgroundImage});
+            background-size: cover;
+            background-position: center;
             z-index: -2;
-          }
-
-          .video-content {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
           }
 
           .gradient-overlay {
