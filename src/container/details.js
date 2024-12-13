@@ -3,11 +3,7 @@ import { Fragment, useState } from "react";
 function WeddingInvitation() {
   const [showPopup, setShowPopup] = useState(false);
 
-  const handleWatchLiveClick = () => {
-    setShowPopup(true);
-    // Auto-close the popup after 3 seconds
-    setTimeout(() => setShowPopup(false), 3000);
-  };
+
 
   return (
     <Fragment>
