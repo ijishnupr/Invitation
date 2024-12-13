@@ -1,7 +1,6 @@
 import { Fragment, useState } from "react";
 
 function WeddingInvitation() {
-  const [showPopup, setShowPopup] = useState(false);
 
 
 
@@ -91,26 +90,7 @@ function WeddingInvitation() {
         </a>
 
 
-        {/* Popup */}
-        {showPopup && (
-          <div
-            style={{
-              position: 'fixed',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              background: 'rgba(0, 0, 0, 0.8)',
-              color: 'white',
-              padding: '20px',
-              borderRadius: '10px',
-              boxShadow: '0 4px 10px rgba(0,0,0,0.5)',
-              textAlign: 'center',
-              zIndex: 1000
-            }}
-          >
-            The live stream will be available on December 14, 2024.
-          </div>
-        )}
+
       </div>
     </Fragment>
   );
